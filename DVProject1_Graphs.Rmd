@@ -23,12 +23,12 @@ df.students <- read_csv('StudentsPerformance.csv')
 ## Part 3
 
 ```{r}
-plot3 <- ggplot(data = df.students, aes(x=`reading score`, y=100*(..count../sum(..count..)))) +
-  geom_histogram(color="black", fill="paleturquoise", boundary = 0, binwidth = 5)  +
-  scale_y_continuous(limit = c(0, 15), expand=c(0,0)) +
-  labs(title="Reading Scores", subtitle = "Based on 1,000 US High School Students", x="Score", y="Percent (%)", caption = "Data From Kaggle: Student Performance")  +
+plot3 <- ggplot(data = df.students, aes(x = `reading score`, y = 100 * (..count../sum(..count..)))) +
+  geom_histogram(color = "black", fill = "paleturquoise", boundary = 0, binwidth = 5)  +
+  scale_y_continuous(limit = c(0, 15), expand = c(0, 0)) +
+  labs(title = "Reading Scores", subtitle = "Based on 1,000 US High School Students", x = "Score", y = "Percent (%)", caption = "Data From Kaggle: Student Performance")  +
   theme_bw() +
-  theme(plot.title=element_text(hjust=0.5), plot.subtitle=element_text(hjust=0.5))
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
 
 plot3 + geom_vline(aes(xintercept = mean(`reading score`)), color = "black", linetype = "dashed", size = 0.8)
 ```
@@ -39,10 +39,10 @@ The distribution of reading scores is skewed left. The reading scores are center
 ## Part 4
 
 ```{r}
-plot4 <- ggplot(data=df.students, aes(x=`math score`, y = 100*(..count../sum(..count..)), fill=`test preparation course`)) +
-  geom_histogram(color = 'black', boundary = 0, binwidth = 5) + labs(title="Math Scores by Test Preparation", subtitle = "Based on 1,000 US High School Students", x="Score", y="Percent (%)", caption = "Data From Kaggle: Student Performance")  + scale_y_continuous(limit = c(0, 10), expand=c(0,0)) + 
-  theme_bw() + theme(plot.title=element_text(hjust=0.5), plot.subtitle=element_text(hjust=0.5)) +
-  facet_wrap(vars(`test preparation course`)) + guides(fill='none') 
+plot4 <- ggplot(data = df.students, aes(x = `math score`, y = 100 * (..count../sum(..count..)), fill = `test preparation course`)) +
+  geom_histogram(color = 'black', boundary = 0, binwidth = 5) + labs(title = "Math Scores by Test Preparation", subtitle = "Based on 1,000 US High School Students", x = "Score", y = "Percent (%)", caption = "Data From Kaggle: Student Performance")  + scale_y_continuous(limit = c(0, 10), expand = c(0, 0)) + 
+  theme_bw() + theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  facet_wrap(vars(`test preparation course`)) + guides(fill = 'none') 
 
 plot4 + scale_fill_manual(values = c('#9EB9A5', '#D27575')) + geom_vline(aes(xintercept = mean(`math score`)), color = "black", linetype = "dashed", size = 0.5)
 ```
