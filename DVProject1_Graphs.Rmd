@@ -24,7 +24,7 @@ df.students <- read_csv('StudentsPerformance.csv')
 
 ```{r}
 plot3 <- ggplot(data = df.students, aes(x=`reading score`, y=100*(..count../sum(..count..)))) +
-  geom_histogram(color="black", fill="paleturquoise", binwidth = 5)  +
+  geom_histogram(color="black", fill="paleturquoise", boundary = 0, binwidth = 5)  +
   scale_y_continuous(limit = c(0, 15), expand=c(0,0)) +
   labs(title="Reading Scores", subtitle = "Based on 1,000 US High School Students", x="Score", y="Percent (%)", caption = "Data From Kaggle: Student Performance")  +
   theme_bw() +
@@ -40,7 +40,7 @@ The distribution of reading scores is skewed left. The reading scores are center
 
 ```{r}
 plot4 <- ggplot(data=df.students, aes(x=`math score`, y = 100*(..count../sum(..count..)), fill=`test preparation course`)) +
-  geom_histogram(color = 'black', binwidth = 5) + labs(title="Math Scores by Test Preparation", subtitle = "Based on 1,000 US High School Students", x="Score", y="Percent (%)", caption = "Data From Kaggle: Student Performance")  + scale_y_continuous(limit = c(0, 10), expand=c(0,0)) + 
+  geom_histogram(color = 'black', boundary = 0, binwidth = 5) + labs(title="Math Scores by Test Preparation", subtitle = "Based on 1,000 US High School Students", x="Score", y="Percent (%)", caption = "Data From Kaggle: Student Performance")  + scale_y_continuous(limit = c(0, 10), expand=c(0,0)) + 
   theme_bw() + theme(plot.title=element_text(hjust=0.5), plot.subtitle=element_text(hjust=0.5)) +
   facet_wrap(vars(`test preparation course`)) + guides(fill='none') 
 
